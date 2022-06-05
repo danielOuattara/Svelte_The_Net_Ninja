@@ -1,0 +1,7 @@
+
+# degit helps to easily clone the latest package from git
+npm i -g degit
+
+# run to 
+degit sveltejs/template <project-name>
+
