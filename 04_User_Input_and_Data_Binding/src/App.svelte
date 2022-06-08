@@ -5,10 +5,14 @@
   let teacher = "The Net Ninja";
   let beltColor = "green";
   let newColor = "";
+  let newColor2 = "";
+
   const handleBeltColor = () => {
     beltColor = "Black";
   };
+
   const handleColorChange = (event) => {
+    event.preventDefault();
     newColor = event.target.value;
   };
 </script>
@@ -18,12 +22,14 @@
   <h2>Welcome to {library} Tutorial from {teacher}</h2>
   <p>
     <!-- {teacher} is <span class="black">{beltColor}</span> -->
-    {teacher} is <span class={beltColor === "green" ? "other-belt" : "black-belt"}>belt</span> belt
+    {teacher} is
+    <span class={beltColor === "green" ? "other-belt" : "black-belt"}>belt</span
+    > belt
   </p>
   <button on:click={handleBeltColor}>Change Color</button>
   <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte
-    apps.
+    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
+    how to build Svelte apps.
   </p>
   <p>
     The next library is <span class="nextLibrary"
@@ -33,23 +39,36 @@
   <hr />
 
   <form>
-    <!-- bindings -->
-    <!-- <label for=""
+    <!-- 2-ways bindings -->
+    <label for=""
       >Choose a color: <input
         type="text"
         placeholder="enter a color"
         on:input={handleColorChange}
         value={newColor}
       />
-    </label> -->
+    </label>
+    <p
+      class={newColor.length > 2 ? "visible" : "invisible"}
+      style="color: {newColor}"
+    >
+      Your color is {newColor}
+    </p>
 
-    <!-- 2-ways bindings -->
+    <!-- 2-ways bindings shorter syntax-->
     <label for=""
-      >Choose a color: <input type="text" placeholder="enter a color" bind:value={newColor} />
+      >Choose a color: <input
+        type="text"
+        placeholder="enter a color"
+        bind:value={newColor2}
+      />
     </label>
   </form>
-  <p class={newColor.length > 2 ? "visible" : "invisible"} style="color: {newColor}">
-    Your color is {newColor}
+  <p
+    class={newColor2.length > 2 ? "visible" : "invisible"}
+    style="color: {newColor2}"
+  >
+    Your color is {newColor2}
   </p>
 </main>
 
